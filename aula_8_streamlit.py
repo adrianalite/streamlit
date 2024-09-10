@@ -28,17 +28,19 @@ st.date_input('Data de viagem')
 st.time_input('Tempo de escola')
 st.text_area('Descrição')
 st.file_uploader('Atualize uma foto')
-st.color_picker('Escolha sua cor favorita')
 
-import time
-st.balloons()
-st.progress(10)
-with st.spinner('Espere...'):
-    time.sleep(10)
+
+st.color_picker('Escolha sua cor favorita')
 
 #mensagens de status
 st.success("Você conseguiu!")
 st.error("Erro!")
 st.warning("Advertência")
 st.info("Esta é uma informação")
+
+import time
+st.balloons()
+st.progress(10)
+with st.spinner('Espere...'):
+    time.sleep(10)
 st.exception(RuntimeError("RuntimeError exception"))
