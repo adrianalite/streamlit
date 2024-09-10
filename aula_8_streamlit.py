@@ -13,7 +13,8 @@ st.code("x=2021")
 st.latex(r''' a+a r^1+a r^2+a r^3 ''')
 
 #criando elementos gráficos
-st.checkbox('Sim')
+x = st.checkbox('Sim')
+st.title(x)
 st.button('Clique')
 st.radio('Selecione seu gênero',['Masculino','Feminino'])
 st.selectbox('Selecione seu gênero',['Masculino','Feminino'])
