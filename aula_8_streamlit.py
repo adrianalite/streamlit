@@ -33,11 +33,11 @@ import time
 
 st.balloons()
 st.progress(10)
-with st.spinner('Wait for it...'):
+with st.spinner('Espere...'):
     time.sleep(10)
 
-st.success("You did it !")
-st.error("Error")
-st.warning("Warning")
-st.info("It's easy to build a streamlit app")
+st.success("Você conseguiu!")
+st.error("Erro!")
+st.warning("Advertência")
+st.info("Esta é uma informaçaõ")
 st.exception(RuntimeError("RuntimeError exception"))
