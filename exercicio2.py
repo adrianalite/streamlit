@@ -10,4 +10,4 @@ df = pd.DataFrame({
 st.write("Criando uma tabela!")
 
 #tabelas interativas
-st.dataframe(df) 
+st.table(df) 
