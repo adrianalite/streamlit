@@ -11,7 +11,7 @@ df[list] = df[list].apply(pd.to_numeric, errors='coerce')
 df.rename(columns={'Lat_d': 'LATITUDE', 'Long_d':'LONGITUDE'}, inplace=True)
 estadoFiltro = st.selectbox(
     'Qual estado selecionar?',
-     df['NM_UF'])
+     df['NM_UF'].unique())
 
 dadosFiltrados = df[df['NM_UF'] == estadoFiltro]
 st.map(dadosFiltrados)
