@@ -37,10 +37,3 @@ st.success("Você conseguiu!")
 st.error("Erro!")
 st.warning("Advertência")
 st.info("Esta é uma informação")
-
-import time
-st.balloons()
-st.progress(10)
-with st.spinner('Espere...'):
-    time.sleep(10)
-st.exception(RuntimeError("RuntimeError exception"))
