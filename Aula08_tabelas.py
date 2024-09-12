@@ -1,19 +1,22 @@
+#criando uma aplicação simples
 import streamlit as st
+#import no requirements.txt
 import pandas as pd
 
 df = pd.DataFrame({
-    'Nome do servidor': ['Adriana', 'Monica', 'Samara'],
-    'Salario': [1200,300,5000]
+    'nomeServidor': ['Adriana', 'Monica', 'Samara'],
+    'salario': [1200,300,5000]
 })
-
 st.write("Criando uma tabela!")
-
 #tabelas interativas
-st.write(df) 
-
+st.write(df)
 #inserindo um selectbox
-option = st.selectbox(
+opcao = st.selectbox(
     'Qual servidor você gostaria de selecionar?',
-     df['Nome do servidor'])
-
-st.write('You selected: ', option)
+     df['nomeServidor'])
+#O formato de print é diferente de outras versões
+#de Python
+st.write('Você selecionou: ', opcao)
+#Filtrando os dados pelo nome
+dadosFiltrados = df[df['nomeServidor'] == opcao]
+st.write(dadosFiltrados)
