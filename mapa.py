@@ -19,6 +19,6 @@ dadosFiltrados = df[df['NM_UF'] == estadoFiltro]
 
 #Mostrar tabela
 if st.checkbox('Mostrar tabela'):
-  st.write(df)
+  st.write(dadosFiltrados)
     
 st.map(dadosFiltrados)
