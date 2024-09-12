@@ -1,15 +1,13 @@
-#inserindo o título
 import streamlit as st
 import pandas as pd
 
 st.title('Localização das comunidades quilombolas (2022)')
 
 df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/main/BR_LQs_CD2022.csv', sep=';')
-df.head()
 
 #Mostrar tabela
 if st.checkbox('Mostrar tabela'):
-  st.table(dadosFiltrados)
+  st.write(dadosFiltrados)
 
 #fillna
 df.fillna(0, inplace=True)
