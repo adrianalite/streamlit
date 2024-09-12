@@ -15,11 +15,10 @@ estadoFiltro = st.selectbox(
     'Qual estado selecionar?',
      estados)
 
+dadosFiltrados = df[df['NM_UF'] == estadoFiltro]
+
 #Mostrar tabela
 if st.checkbox('Mostrar tabela'):
   st.write(df)
-
-dadosFiltrados = df[df['NM_UF'] == estadoFiltro]
+    
 st.map(dadosFiltrados)
-
-
