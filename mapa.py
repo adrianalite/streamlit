@@ -5,10 +5,6 @@ st.title('Localização das comunidades quilombolas (2022)')
 
 df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/main/BR_LQs_CD2022.csv', sep=';')
 
-#Mostrar tabela
-if st.checkbox('Mostrar tabela'):
-  st.write(dadosFiltrados)
-
 #fillna
 df.fillna(0, inplace=True)
 list = ['Lat_d', 'Long_d']
@@ -19,5 +15,11 @@ estadoFiltro = st.selectbox(
     'Qual estado selecionar?',
      estados)
 
+#Mostrar tabela
+if st.checkbox('Mostrar tabela'):
+  st.write(df)
+
 dadosFiltrados = df[df['NM_UF'] == estadoFiltro]
 st.map(dadosFiltrados)
+
+
