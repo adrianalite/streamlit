@@ -18,3 +18,5 @@ opcao = st.selectbox(
 #de Python
 st.write('Você selecionou: ', opcao)
 #como filtrar os dados pelo nome?
+dadosFiltrados = df[df['nomeServidor'] == opcao]
+st.write(dadosFiltrados)
