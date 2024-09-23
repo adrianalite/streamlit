@@ -6,7 +6,6 @@ dadosJSON = resposta.json()
 
 #criando o dataframe
 import pandas as pd
-
 df = pd.DataFrame(dadosJSON)
 dfFiltrado = df.loc[:, ['nome_comercial', 'valor_patrimonio_liquido', 'data_patrimonio_liquido', 'municipio', 'uf']]
 
@@ -32,6 +31,8 @@ estados = dfFiltrado['uf']
 
 classificacoes = [classificar_regiao(estado) for estado in estados]
 dfFiltrado['regiao'] = classificacoes
+
+#retirando espaços dos campos
 dfFiltrado = dfFiltrado[(dfFiltrado != '').all(axis=1)]
 
 #criando o dashboard
