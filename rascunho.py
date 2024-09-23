@@ -27,7 +27,8 @@ df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/main/BR
 
 #dados sobre estatística descritiva
 qtdeMunicipios = len(df['NM_MUNIC'].unique())
-st.write("A quantidade de municípios com localização quilombola é " + str(qtdeMunicipios))
+#st.write("A quantidade de municípios com localização quilombola é " + str(qtdeMunicipios))
+st.metric(Municípios, qtdeMunicipios)
 
 qtdeComunidades = len(df['NM_AGLOM'].unique())
 st.write("A quantidade de comunidades quilombolas é " + str(qtdeComunidades))
