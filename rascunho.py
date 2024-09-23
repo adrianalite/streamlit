@@ -20,14 +20,6 @@ if st.checkbox('Mostrar tabela'):
   st.write(dadosFiltrados)
 st.map(dadosFiltrados)
 
-#número de comunidades por estado
-st.header('Número de comunidades por UF')
-st.bar_chart(df['NM_UF'].value_counts())
-
-#os dez municípios com mais comunidades
-st.header('Os dez municípios com mais comunidades quilombolas')
-st.bar_chart(df['NM_MUNIC'].value_counts()[:10])
-
 #dados sobre estatística descritiva
 qtdeMunicipios = len(df['NM_MUNIC'].unique())
 #st.write("A quantidade de municípios com localização quilombola é " + str(qtdeMunicipios))
@@ -39,3 +31,11 @@ st.metric('# Comunidades', qtdeComunidades)
 
 #documentação do streamlit para metric
 #https://docs.streamlit.io/develop/api-reference/data/st.metric
+
+#número de comunidades por estado
+st.header('Número de comunidades por UF')
+st.bar_chart(df['NM_UF'].value_counts())
+
+#os dez municípios com mais comunidades
+st.header('Os dez municípios com mais comunidades quilombolas')
+st.bar_chart(df['NM_MUNIC'].value_counts()[:10])
