@@ -1,3 +1,9 @@
+#criando um slider
 import streamlit as st
-number = st.slider("Selecione um número: ", min_value=1, max_value=10)
-st.text("Seu número é " + str(number))
+import pandas as pd
+
+#preparando o dataframe
+df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/main/BR_LQs_CD2022.csv')
+
+numero = st.slider('Selecione um número de linhas a serem exibidas', min_value = 0, max_value = 100)
+st.write(df.head(numero))
