@@ -41,8 +41,6 @@ import matplotlib.pyplot as plt
 
 st.title('Corretoras do Brasil')
 
-
-
 fig1, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 ax.pie(dfFiltrado['regiao'].value_counts(), labels=dfFiltrado['regiao'].value_counts().index, autopct='%1.1f%%')
@@ -51,4 +49,9 @@ ax.set_ylabel('Quantidade')
 ax.set_title('Quantidade de corretoras por região')
 st.pyplot(fig1)
 
-st.scatter_chart(dfFiltrado)
+st.scatter_chart(dfFiltrado, 
+                 x='data_patrimonio_liquido', 
+                 y='valor_patrimonio_liquido',
+                 x_label='Data do Patrimônio Líquido',
+                 y_label='Valor do Patrimônio Líquido',
+                 color='regiao')
