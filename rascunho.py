@@ -42,6 +42,6 @@ import matplotlib.pyplot as plt
 st.title('Corretoras do Brasil')
 
 fig, ax = plt.subplots()
+plt.figure(figsize=(10, 6))
 ax.bar(dfFiltrado['regiao'].value_counts().index, dfFiltrado['regiao'].value_counts().values)
-
 st.pyplot(fig)
