@@ -1,4 +1,4 @@
-#versao final
+#versao com colunas
 import streamlit as st
 import pandas as pd
 
@@ -22,15 +22,12 @@ st.map(dadosFiltrados)
 
 #dados sobre estatística descritiva
 qtdeMunicipios = len(df['NM_MUNIC'].unique())
-#st.write("A quantidade de municípios com localização quilombola é " + str(qtdeMunicipios))
-st.metric('# Municípios', qtdeMunicipios)
-
 qtdeComunidades = len(df['NM_AGLOM'].unique())
-#st.write("A quantidade de comunidades quilombolas é " + str(qtdeComunidades))
-st.metric('# Comunidades', qtdeComunidades)
 
-#documentação do streamlit para metric
-#https://docs.streamlit.io/develop/api-reference/data/st.metric
+#criando duas colunas para os dados
+colunas = st.columns(2)
+colunas[0].metric('# Municípios', len(df['NM_MUNIC'].unique()))
+colunas[1].metric('# Comunidades', len(df['NM_AGLOM'].unique()))
 
 #número de comunidades por estado
 st.header('Número de comunidades por UF')
