@@ -41,11 +41,19 @@ import matplotlib.pyplot as plt
 
 st.title('Corretoras do Brasil')
 
+
+
 fig1, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 ax.pie(dfFiltrado['regiao'].value_counts(), labels=dfFiltrado['regiao'].value_counts().index, autopct='%1.1f%%')
 ax.set_xlabel('Região')
 ax.set_ylabel('Quantidade')
 ax.set_title('Quantidade de corretoras por região')
-
 st.pyplot(fig1)
+
+fig2 = px.scatter(dfFiltrado, 
+                 x='data_patrimonio_liquido', 
+                 y='valor_patrimonio_liquido', 
+                 color='regiao', 
+                 hover_name='nome_comercial')
+st.pyplot(fig2)
