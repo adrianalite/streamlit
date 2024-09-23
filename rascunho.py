@@ -54,4 +54,7 @@ st.scatter_chart(dfFiltrado,
                  y='valor_patrimonio_liquido',
                  x_label='Data do Patrimônio Líquido',
                  y_label='Valor do Patrimônio Líquido',
-                 color='regiao')
+                 color='regiao',
+                 width=15, 
+                 height=10
+                 )
