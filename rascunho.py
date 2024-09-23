@@ -1,38 +1,44 @@
-#versao com colunas
-import streamlit as st
+#acessando a api de dados
+url = 'https://brasilapi.com.br/api/cvm/corretoras/v1'
+import requests as rq
+resposta = rq.get(url)
+dadosJSON = resposta.json()
+
+#criando o dataframe
 import pandas as pd
 
-st.title('Localização das comunidades quilombolas (2022)')
-df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/main/BR_LQs_CD2022.csv')
+df = pd.DataFrame(dadosJSON)
+dfFiltrado = df.loc[:, ['nome_comercial', 'valor_patrimonio_liquido', 'data_patrimonio_liquido', 'municipio', 'uf']]
 
-#limpando os dados
-df.fillna(0, inplace=True)
-df.drop(columns=['Unnamed: 0'], inplace=True)
-list = ['Lat_d', 'Long_d']
-df[list] = df[list].apply(pd.to_numeric, errors='coerce')
-df.rename(columns={'Lat_d': 'LATITUDE', 'Long_d':'LONGITUDE'}, inplace=True)
-estados = df['NM_UF'].unique()
-estadoFiltro = st.selectbox(
-    'Qual estado selecionar?',
-     estados)
-dadosFiltrados = df[df['NM_UF'] == estadoFiltro]
-if st.checkbox('Mostrar tabela'):
-  st.write(dadosFiltrados)
-st.map(dadosFiltrados)
+regioes = {
+    'Norte': ['AC', 'AP', 'AM', 'PA', 'RO', 'RR', 'TO'],
+    'Nordeste': ['AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'RN', 'SE'],
+    'Centro-Oeste': ['DF', 'GO', 'MT', 'MS'],
+    'Sudeste': ['ES', 'MG', 'RJ', 'SP'],
+    'Sul': ['PR', 'RS', 'SC']
+}
 
-#dados sobre estatística descritiva
-qtdeMunicipios = len(df['NM_MUNIC'].unique())
-qtdeComunidades = len(df['NM_AGLOM'].unique())
+# Função para classificar o estado pela região
+def classificar_regiao(estado):
+    for regiao, estados in regioes.items():
+        if estado in estados:
+            return regiao
+    return 'Estado não encontrado'
 
-#criando duas colunas para os dados
-colunas = st.columns(2)
-colunas[0].metric('# Municípios', len(df['NM_MUNIC'].unique()))
-colunas[1].metric('# Comunidades', len(df['NM_AGLOM'].unique()))
+# Exemplo de uso
+estados = dfFiltrado['uf']
 
-#número de comunidades por estado
-st.header('Número de comunidades por UF')
-st.bar_chart(df['NM_UF'].value_counts())
+# Aplicar a função de classificação aos estados
 
-#os dez municípios com mais comunidades
-st.header('Os dez municípios com mais comunidades quilombolas')
-st.bar_chart(df['NM_MUNIC'].value_counts()[:10])
+classificacoes = [classificar_regiao(estado) for estado in estados]
+dfFiltrado['regiao'] = classificacoes
+dfFiltrado = dfFiltrado[(dfFiltrado != '').all(axis=1)]
+
+#criando o dashboard
+import streamlit as st
+import matplotlib.pyplot as plt
+
+st.title('Corretoras do Brasil')
+
+fig, ax = plt.subplots()
+ax.bar(dfFiltrado['regiao'].value_counts().index, dfFiltrado['regiao'].value_counts().values)
