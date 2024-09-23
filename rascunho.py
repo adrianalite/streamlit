@@ -41,7 +41,12 @@ import matplotlib.pyplot as plt
 
 st.title('Corretoras do Brasil')
 
-fig, ax = plt.subplots()
+fig1, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
+ax.pie(dfFiltrado['regiao'].value_counts(), labels=dfFiltrado['regiao'].value_counts().index, autopct='%1.1f%%')
 ax.bar(dfFiltrado['regiao'].value_counts().index, dfFiltrado['regiao'].value_counts().values)
-st.pyplot(fig)
+ax.set_xlabel('Região')
+ax.set_ylabel('Quantidade')
+ax.set_title('Quantidade de corretoras por região')
+
+st.pyplot(fig1)
