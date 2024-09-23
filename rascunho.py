@@ -43,3 +43,5 @@ st.title('Corretoras do Brasil')
 
 fig, ax = plt.subplots()
 ax.bar(dfFiltrado['regiao'].value_counts().index, dfFiltrado['regiao'].value_counts().values)
+
+st.pyplot(fig)
