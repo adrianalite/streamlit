@@ -51,6 +51,8 @@ ax.set_ylabel('Quantidade')
 ax.set_title('Quantidade de corretoras por região')
 st.pyplot(fig1)
 
+import plotly.express as px
+
 fig2 = px.scatter(dfFiltrado, 
                  x='data_patrimonio_liquido', 
                  y='valor_patrimonio_liquido', 
