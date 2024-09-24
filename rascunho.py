@@ -58,17 +58,11 @@ ax.set_ylabel('Quantidade')
 ax.set_title('Quantidade de corretoras por região')
 st.pyplot(fig1)
 
-'''st.scatter_chart(dfFiltrado,
+st.scatter_chart(dfFiltrado,
                  x='data_patrimonio_liquido',
                  y='valor_patrimonio_liquido',
                  x_label='Data do Patrimônio Líquido',
                  y_label='Valor do Patrimônio Líquido',
-                 color='regiao')'''
-
-fig = px.scatter(dfFiltrado,
-                 x='data_patrimonio_liquido',
-                 y='valor_patrimonio_liquido',
-                 color='regiao',
-                 hover_name='nome_comercial')
+                 color='regiao')
 
 st.plotly_chart(fig, theme=None)
