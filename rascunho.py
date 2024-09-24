@@ -53,5 +53,10 @@ st.scatter_chart(dfFiltrado,
                  y_label='Valor do Patrimônio Líquido',
                  color='regiao')
 
+#gráfico de barras
 st.header('Quantidade de corretoras por região')
 st.bar_chart(dfFiltrado['regiao'].value_counts())
+
+#Outras informações sobre estatística descritiva
+st.header('Outras informações sobre estatística descritiva')
+st.write(dfFiltrado.describe())
