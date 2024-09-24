@@ -7,6 +7,12 @@ dadosJSON = resposta.json()
 #criando o dataframe
 import pandas as pd
 df = pd.DataFrame(dadosJSON)
+
+#fazendo a conversão de tipos
+df['data_patrimonio_liquido'] = pd.to_datetime(df['data_patrimonio_liquido'])
+df['valor_patrimonio_liquido'] = pd.to_numeric(df['valor_patrimonio_liquido'])
+
+#selecionando os campos do dataframe
 dfFiltrado = df.loc[:, ['nome_comercial', 'valor_patrimonio_liquido', 'data_patrimonio_liquido', 'municipio', 'uf']]
 
 regioes = {
@@ -28,7 +34,6 @@ def classificar_regiao(estado):
 estados = dfFiltrado['uf']
 
 # Aplicar a função de classificação aos estados
-
 classificacoes = [classificar_regiao(estado) for estado in estados]
 dfFiltrado['regiao'] = classificacoes
 
@@ -49,8 +54,8 @@ ax.set_ylabel('Quantidade')
 ax.set_title('Quantidade de corretoras por região')
 st.pyplot(fig1)
 
-st.scatter_chart(dfFiltrado, 
-                 x='data_patrimonio_liquido', 
+st.scatter_chart(dfFiltrado,
+                 x='data_patrimonio_liquido',
                  y='valor_patrimonio_liquido',
                  x_label='Data do Patrimônio Líquido',
                  y_label='Valor do Patrimônio Líquido',
