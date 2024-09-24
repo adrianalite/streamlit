@@ -48,7 +48,13 @@ st.title('Corretoras do Brasil')
 
 fig1, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
-ax.pie(dfFiltrado['regiao'].value_counts(), labels=dfFiltrado['regiao'].value_counts().index, autopct='%1.1f%%')
+ax.pie(dfFiltrado['regiao'].value_counts(), 
+       labels=dfFiltrado['regiao'].value_counts().index, 
+       autopct='%1.1f%%',
+       explode=[0, 0, 0.1, 0, 0],
+       shadow=True,
+       startangle=9
+       )
 ax.set_xlabel('Região')
 ax.set_ylabel('Quantidade')
 ax.set_title('Quantidade de corretoras por região')
