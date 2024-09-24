@@ -64,5 +64,3 @@ st.scatter_chart(dfFiltrado,
                  x_label='Data do Patrimônio Líquido',
                  y_label='Valor do Patrimônio Líquido',
                  color='regiao')
-
-st.plotly_chart(fig, theme=None)
