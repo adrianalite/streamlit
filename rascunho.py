@@ -8,12 +8,12 @@ dadosJSON = resposta.json()
 import pandas as pd
 df = pd.DataFrame(dadosJSON)
 
-#fazendo a conversão de tipos
-df['data_patrimonio_liquido'] = pd.to_datetime(df['data_patrimonio_liquido'])
-df['valor_patrimonio_liquido'] = pd.to_numeric(df['valor_patrimonio_liquido'])
-
 #selecionando os campos do dataframe
 dfFiltrado = df.loc[:, ['nome_comercial', 'valor_patrimonio_liquido', 'data_patrimonio_liquido', 'municipio', 'uf']]
+
+#fazendo a conversão de tipos
+dfFiltrado['data_patrimonio_liquido'] = pd.to_datetime(dfFiltrado['data_patrimonio_liquido'])
+dfFiltrado['valor_patrimonio_liquido'] = pd.to_numeric(dfFiltrado['valor_patrimonio_liquido'])
 
 regioes = {
     'Norte': ['AC', 'AP', 'AM', 'PA', 'RO', 'RR', 'TO'],
