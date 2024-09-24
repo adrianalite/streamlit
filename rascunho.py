@@ -60,3 +60,6 @@ st.bar_chart(dfFiltrado['regiao'].value_counts())
 #Outras informações sobre estatística descritiva
 st.header('Outras informações sobre estatística descritiva')
 st.write(dfFiltrado.describe())
+
+st.metric('Maior patriônio líquido', dfFiltrado['valor_patrimonio_liquido'].max())
+st.metric('Menor patriônio líquido', dfFiltrado['valor_patrimonio_liquido'].min())
