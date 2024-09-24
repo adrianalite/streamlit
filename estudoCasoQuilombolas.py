@@ -1,4 +1,4 @@
-#versao com colunas
+#versao completa com colunas
 import streamlit as st
 import pandas as pd
 
@@ -9,6 +9,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/main/BR
 df.fillna(0, inplace=True)
 df.drop(columns=['Unnamed: 0'], inplace=True)
 list = ['Lat_d', 'Long_d']
+df = df[(df != '').all(axis=1)]
 df[list] = df[list].apply(pd.to_numeric, errors='coerce')
 df.rename(columns={'Lat_d': 'LATITUDE', 'Long_d':'LONGITUDE'}, inplace=True)
 estados = df['NM_UF'].unique()
