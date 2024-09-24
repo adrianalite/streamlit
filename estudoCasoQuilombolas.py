@@ -9,8 +9,8 @@ df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/main/BR
 df.fillna(0, inplace=True)
 df.drop(columns=['Unnamed: 0'], inplace=True)
 list = ['Lat_d', 'Long_d']
-df = df[(df != '').all(axis=1)]
-df[list] = df[list].apply(pd.to_numeric, errors='coerce')
+#testando
+df = df.replace(to_replace=[None], value=0)
 df.rename(columns={'Lat_d': 'LATITUDE', 'Long_d':'LONGITUDE'}, inplace=True)
 estados = df['NM_UF'].unique()
 estadoFiltro = st.selectbox(
