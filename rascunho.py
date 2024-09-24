@@ -51,9 +51,7 @@ plt.figure(figsize=(10, 6))
 ax.pie(dfFiltrado['regiao'].value_counts(), 
        labels=dfFiltrado['regiao'].value_counts().index, 
        autopct='%1.1f%%',
-       explode=[0, 0, 0.1, 0, 0],
-       shadow=True,
-       startangle=9
+       explode=[0, 0, 0.1, 0, 0]
        )
 ax.set_xlabel('Região')
 ax.set_ylabel('Quantidade')
@@ -65,5 +63,4 @@ st.scatter_chart(dfFiltrado,
                  y='valor_patrimonio_liquido',
                  x_label='Data do Patrimônio Líquido',
                  y_label='Valor do Patrimônio Líquido',
-                 color='regiao',
-                 use_container_width=True)
+                 color='regiao')
