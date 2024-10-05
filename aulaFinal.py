@@ -27,8 +27,9 @@ dfEstados = pd.DataFrame({
     'quantidade': ocorrencias.values}
     )
 
-st.dataframe(dfEstados)
-st.json(dadosJSON)
+st.title('Dados sobre os deputados')
+st.dataframe(df)
+st.write('Total de deputados por estado')
 st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade')
 
 
