@@ -1,5 +1,6 @@
 import requests as rq
 import pandas as pd
+import streamlit as st
 
 #carregando o dataframe de mulheres
 url = 'https://dadosabertos.camara.leg.br/api/v2/deputados?siglaSexo=F&ordem=ASC&ordenarPor=nome'
