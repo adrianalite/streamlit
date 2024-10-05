@@ -36,6 +36,14 @@ dfEstados = pd.DataFrame({
     'quantidade': ocorrencias.values}
     )
 
+#total de homens
+totalHomens = dfHomens['id'].count()
+st.metric('Total de Homens', totalHomens)
+
+#total de mulheres
+totalMulheres = dfMulheres['id'].count()
+st.metric('Total de HMulheres', totalMulheres)
+
 st.write('Total de deputadas do sexo ' + opcao)
 st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
 
