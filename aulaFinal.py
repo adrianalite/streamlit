@@ -27,7 +27,7 @@ opcao = st.selectbox(
      df['sexo'].unique())
 
 dfFiltrado = df[df['sexo'] == opcao]
-st.title('Dados sobre os deputados do sexo ' + opcao)
+st.title('Deputados do sexo ' + opcao)
 
 #ocorrencias totais
 ocorrencias = dfFiltrado['siglaUf'].value_counts()
@@ -42,7 +42,7 @@ st.metric('Total de Homens', totalHomens)
 
 #total de mulheres
 totalMulheres = dfMulheres['id'].count()
-st.metric('Total de HMulheres', totalMulheres)
+st.metric('Total de Mulheres', totalMulheres)
 
 st.write('Total de deputadas do sexo ' + opcao)
 st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
