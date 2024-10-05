@@ -30,6 +30,6 @@ dfEstados = pd.DataFrame({
 st.title('Dados sobre os deputados')
 st.dataframe(df)
 st.write('Total de deputados por estado')
-st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade')
+st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
 
 
