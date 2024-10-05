@@ -2,21 +2,29 @@ import requests as rq
 import pandas as pd
 import streamlit as st
 
-#carregando o dataframe de mulheres
+#identificando as mulheres
+
 url = 'https://dadosabertos.camara.leg.br/api/v2/deputados?siglaSexo=F&ordem=ASC&ordenarPor=nome'
 resposta = rq.get(url)
 dadosJSON = resposta.json()
 dfMulheres = pd.DataFrame(dadosJSON['dados'])
+dfMulheres['sexo'] = 'F'
 
-#carregando o dataframe de mulheres
+#identificando os homens
 url = 'https://dadosabertos.camara.leg.br/api/v2/deputados?siglaSexo=M&ordem=ASC&ordenarPor=nome'
 resposta = rq.get(url)
 dadosJSON = resposta.json()
 dfHomens = pd.DataFrame(dadosJSON['dados'])
+dfHomens['sexo'] = 'M'
 
-st.bar_chart(dfMulheres['siglaPartido'])
-st.bar_chart(chart_data)
+#unindo os dataframes
+df = pd.concat([dfMulheres, dfHomens])
 
+ocorrencias = df['siglaUf'].value_counts()
 
+dfPlotado = pd.DataFrame({
+    'siglaUf': ocorrencias.index,
+    'quantidade': ocorrencias.values}
+    )
 
-
+st.bar_chart(dfPlotado, x = 'siglaUf', y = 'quantidade')
