@@ -48,8 +48,7 @@ opcao = st.selectbox(
      df['sexo'].unique())
 
 dfFiltrado = df[df['sexo'] == opcao]
-
 st.title('Dados sobre os deputados')
-st.dataframe(df)
+st.dataframe(dfFiltrado)
 st.write('Total de deputadas do sexo' + opcao)
 st.bar_chart(dfFiltrado, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
