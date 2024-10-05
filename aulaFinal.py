@@ -22,9 +22,13 @@ df = pd.concat([dfMulheres, dfHomens])
 
 ocorrencias = df['siglaUf'].value_counts()
 
-dfPlotado = pd.DataFrame({
+dfEstados = pd.DataFrame({
     'siglaUf': ocorrencias.index,
     'quantidade': ocorrencias.values}
     )
 
-st.bar_chart(dfPlotado, x = 'siglaUf', y = 'quantidade')
+st.dataframe(dfEstados)
+st.json(dadosJSON)
+st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade')
+
+
