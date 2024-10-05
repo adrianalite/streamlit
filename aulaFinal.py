@@ -27,7 +27,7 @@ opcao = st.selectbox(
      df['sexo'].unique())
 
 dfFiltrado = df[df['sexo'] == opcao]
-st.title('Dados sobre os deputados do sexo ' + opcao')
+st.title('Dados sobre os deputados do sexo ' + opcao)
 st.dataframe(dfFiltrado)
 
 #ocorrencias totais
