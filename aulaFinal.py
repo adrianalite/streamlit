@@ -41,13 +41,15 @@ dfEstadosHomens = pd.DataFrame({
     'quantidade': ocorrenciasHomens.values}
     )
 
+#Filtrando df por sexo
+#inserindo um selectbox
+opcao = st.selectbox(
+    'Qual servidor você gostaria de selecionar?',
+     df['sexo'].unique())
+
+dfFiltrado = df[df['sexo'] == opcao]
+
 st.title('Dados sobre os deputados')
 st.dataframe(df)
-st.write('Total de deputadas mulheres por estado')
-st.bar_chart(dfEstadosMulheres, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
-
-st.write('Total de deputados homens por estado')
-st.bar_chart(dfEstadosHomens, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
-
-st.write('Total de deputados estado')
-st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
+st.write('Total de deputadas do sexo' + opcao)
+st.bar_chart(dfFiltrado, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
