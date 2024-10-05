@@ -20,27 +20,6 @@ dfHomens['sexo'] = 'M'
 #unindo os dataframes
 df = pd.concat([dfMulheres, dfHomens])
 
-#ocorrencias totais
-ocorrencias = df['siglaUf'].value_counts()
-dfEstados = pd.DataFrame({
-    'siglaUf': ocorrencias.index,
-    'quantidade': ocorrencias.values}
-    )
-
-#ocorrências sobre as mulheres
-ocorrenciasMulheres = dfMulheres['siglaUf'].value_counts()
-dfEstadosMulheres = pd.DataFrame({
-    'siglaUf': ocorrenciasMulheres.index,
-    'quantidade': ocorrenciasMulheres.values}
-    )
-
-#ocorrências sobre os homens
-ocorrenciasHomens = dfHomens['siglaUf'].value_counts()
-dfEstadosHomens = pd.DataFrame({
-    'siglaUf': ocorrenciasHomens.index,
-    'quantidade': ocorrenciasHomens.values}
-    )
-
 #Filtrando df por sexo
 #inserindo um selectbox
 opcao = st.selectbox(
@@ -48,7 +27,15 @@ opcao = st.selectbox(
      df['sexo'].unique())
 
 dfFiltrado = df[df['sexo'] == opcao]
-st.title('Dados sobre os deputados')
+st.title('Dados sobre os deputados do sexo ' + opcao')
 st.dataframe(dfFiltrado)
-st.write('Total de deputadas do sexo' + opcao)
-st.bar_chart(dfFiltrado, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
+
+#ocorrencias totais
+ocorrencias = dfFiltrado['siglaUf'].value_counts()
+dfEstados = pd.DataFrame({
+    'siglaUf': ocorrencias.index,
+    'quantidade': ocorrencias.values}
+    )
+
+st.write('Total de deputadas do sexo ' + opcao)
+st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
