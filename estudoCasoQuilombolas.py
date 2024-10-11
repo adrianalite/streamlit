@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 st.title('Localização das comunidades quilombolas (2022)')
-df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/main/BR_LQs_CD2022.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/refs/heads/main/dados_limpos_IBGE.csv')
 
 # Substitui valores 'None' por np.nan
 df['Lat_d'] = df['Lat_d'].replace([None], np.nan)
