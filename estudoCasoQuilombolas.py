@@ -28,7 +28,7 @@ if st.checkbox('Mostrar tabela'):
   st.write(dadosFiltrados)
 #st.map(dadosFiltrados)
 
-st.map(df, latitude="Lat_d", longitude="Long_d", size="col3", color="col4")
+st.map(dadosFiltrados, latitude="Lat_d", longitude="Long_d")
 #st.map(df, latitude="Lat_d", longitude="Long_d", size="col3", color="col4")
 
 #dados sobre estatística descritiva
