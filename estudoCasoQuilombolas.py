@@ -1,14 +1,9 @@
 #versao completa com colunas
 import streamlit as st
 import pandas as pd
-import numpy as np
 
 st.title('Localização das comunidades quilombolas (2022)')
 df = pd.read_csv('https://raw.githubusercontent.com/adrianalite/datasets/main/BR_LQs_CD2022.csv')
-
-# Substitui valores 'None' por np.nan
-df['Lat_d'] = df['Lat_d'].replace([None], np.nan)
-df['Long_d'] = df['Long_d'].replace([None], np.nan)
 
 #limpando os dados
 df.fillna(0, inplace=True)
@@ -17,7 +12,6 @@ list = ['Lat_d', 'Long_d']
 #convertendo para numeros
 df[list] = df[list].apply(pd.to_numeric, errors='coerce')
 #df.rename(columns={'Lat_d': 'LATITUDE', 'Long_d':'LONGITUDE'}, inplace=True)
-
 
 estados = df['NM_UF'].unique()
 estadoFiltro = st.selectbox(
