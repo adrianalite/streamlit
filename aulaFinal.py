@@ -46,7 +46,7 @@ st.metric('Porcentagem de Homens', totalHomens/total * 100)
 
 #total de mulheres
 totalMulheres = dfMulheres['id'].count()
-st.metric('Total de Mulheres', totalMulheres/total * 100)
+st.metric('Porcentagem de Mulheres', totalMulheres/total * 100)
 
 st.write('Total de deputadas do sexo ' + opcao)
 st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
