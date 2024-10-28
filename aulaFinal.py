@@ -60,4 +60,7 @@ dadosJSON = resposta.json()
 df = pd.DataFrame(dadosJSON['dados'])
 #calculando os gastos
 gastos = df['valorLiquido'].sum()
+nomeDeputado = df['nome'].iloc[0]
+
+st.title('Gastos do deputado ' + nomeDeputado + nomeDeputado)
 st.metric('Gastos do deputado', gastos)
