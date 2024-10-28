@@ -52,3 +52,12 @@ st.write('Total de deputadas do sexo ' + opcao)
 st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
 
 st.dataframe(dfFiltrado)
+
+url = 'https://dadosabertos.camara.leg.br/api/v2/deputados/204528/despesas?ordem=ASC&ordenarPor=ano'
+
+resposta = rq.get(url)
+dadosJSON = resposta.json()
+df = pd.DataFrame(dadosJSON['dados'])
+#calculando os gastos
+gastos = df['valorLiquido'].sum()
+st.metric('Gastos do deputado', gastos)
